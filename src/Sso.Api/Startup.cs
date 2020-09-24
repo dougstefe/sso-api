@@ -2,8 +2,11 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Sso.Api.OpenId;
+using Sso.Domain.Interfaces.Repositories;
+using Sso.Infra;
 
-namespace sso_api
+namespace Sso.Api
 {
     public class Startup
     {
@@ -22,9 +25,13 @@ namespace sso_api
             })
             .AddInMemoryIdentityResources(Config.IdentityResources)
             .AddInMemoryApiScopes(Config.ApiScopes)
-            .AddInMemoryClients(Config.Clients);
+            .AddInMemoryClients(Config.Clients)
+            .AddResourceOwnerValidator<ResourceOwnerPasswordValidator>();
 
             builder.AddDeveloperSigningCredential();
+
+            services.AddSingleton<IUserRepository, UserRepository>();
+
         }
 
         public void Configure(IApplicationBuilder app)

@@ -1,6 +1,7 @@
 ﻿using IdentityServer4.Models;
 using System.Collections.Generic;
-namespace sso_api
+
+namespace Sso.Api
 {
     public static class Config
     {
@@ -23,7 +24,7 @@ namespace sso_api
             {
                 new Client
                 {
-                    AllowedGrantTypes = GrantTypes.ClientCredentials,
+                    AllowedGrantTypes = GrantTypes.ResourceOwnerPasswordAndClientCredentials,
                     ClientId = "xpto_app",
                     ClientSecrets = { new Secret("xpto_segredo".Sha256()) },
                     AllowedScopes = { "openid", "profile", "read", "write", "delete" },

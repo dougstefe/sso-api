@@ -9,4 +9,9 @@
 
     <PackageReference Include="Serilog.AspNetCore" Version="3.2.0" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\Sso.Domain\Sso.Domain.csproj" />
+    <ProjectReference Include="..\Sso.Infra\Sso.Infra.csproj" />
+  </ItemGroup>
 </Project>
